@@ -21,7 +21,11 @@ jobs:
       MAVEN_OPTS: -Xmx3200m
 
     steps:
-    - checkout
+      - checkout
+
+     - run:
+         name: Extract chrome driver
+         command: chown -R $USER:$USER /home
 #    - run:
 #        name: Download Selenium server
 #        command: curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
