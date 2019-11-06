@@ -16,13 +16,6 @@ public class TC1_SeleniumxWebPageTest extends TestCase {
             SERVER_URL = "http://localhost",
             BASE_URL = "http://localhost:8080/address-formatter-0.0.1-SNAPSHOT",
             IMPLICIT_WAIT = 10)
-//    @DriverSettings(
-//            OS = Set.OS.MAC,
-//            WINDOW_SIZE = Set.WINDOW_SIZE.DEFAULT,
-//            BROWSER = Set.BROWSER.CHROME,
-//            BASE_URL = "https://www.seleniumx.com/",
-//            IMPLICIT_WAIT = 10000
-//    )
     @Script(script = SeleniumxWebPageTestScript.class)
     public void testCase() {
         run();
