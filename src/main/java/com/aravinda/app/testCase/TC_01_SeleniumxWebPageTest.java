@@ -7,7 +7,7 @@ import org.seleniumx.annotations.ServerSettings;
 import org.seleniumx.util.Set;
 import org.seleniumx.util.TestCase;
 
-public class TC1_SeleniumxWebPageTest extends TestCase {
+public class TC_01_SeleniumxWebPageTest extends TestCase {
 
     @ServerSettings(PLATFORM = Platform.MAC,
             BROWSER = Set.BROWSER.CHROME,
