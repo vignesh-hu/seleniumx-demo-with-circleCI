@@ -7,14 +7,9 @@ jobs:
   build:
     docker:
     # specify the version you desire here
-    - image: circleci/node:jessie-browsers
+    - image: selenium/standalone-chrome:latest
 
-    # Specify service dependencies here if necessary
-    # CircleCI maintains a library of pre-built images
-    # documented at https://circleci.com/docs/2.0/circleci-images/
-    # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
+    working_directory: /home
 
     environment:
       # Customize the JVM maximum heap limit
@@ -22,21 +17,6 @@ jobs:
 
     steps:
     - checkout
-    - run:
-        name: Download Selenium server
-        command: curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-    - run:
-        name: Download Selenium chrome driver
-        command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
-    - run:
-        name: Extract chrome driver
-        command: |
-          unzip chromedriver_linux64.zip
-          chmod -R 777 chromedriver
-          chown -R circleci:circleci chromedriver
-          chmod -R 777 selenium-server-standalone-3.141.59.jar
-          chown -R circleci:circleci selenium-server-standalone-3.141.59.jar
-          ls -la
 
     - run:
         name: install maven
@@ -44,11 +24,6 @@ jobs:
           sudo apt-get update
           sudo apt install maven
           mvn -version
-
-    - run:
-        name: Start Selenium server
-        command: java -Dwebdriver.chrome.driver="/home/circleci/repo/chromedriver" -jar selenium-server-standalone-3.141.59.jar -port 4444
-        background: true
 
     # Download and cache dependencies
     - restore_cache:
