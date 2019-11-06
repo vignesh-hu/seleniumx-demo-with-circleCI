@@ -22,7 +22,7 @@ jobs:
         name: install maven
         command: |
           sudo apt-get update
-          sudo apt install maven
+          sudo apt install maven -y whatever
           mvn -version
 
     # Download and cache dependencies
