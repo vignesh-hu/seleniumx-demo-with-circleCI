@@ -27,7 +27,7 @@ jobs:
         command: curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
     - run:
         name: Download Selenium chrome driver
-        command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
+        command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux32.zip
     - run:
         name: Extract chrome driver
         command: |
