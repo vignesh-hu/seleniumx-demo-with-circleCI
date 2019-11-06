@@ -30,7 +30,12 @@ jobs:
         command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
     - run:
         name: Extract chrome driver
-        command: unzip chromedriver_linux64.zip
+        command: |
+          unzip chromedriver_linux64.zip
+          pwd
+          ls -la
+          chown -R $USER:$USER chromedriver
+
     - run:
         name: Start Selenium server
         command: java -Dwebdriver.chrome.driver="~/repo/chromedriver" -jar selenium-server-standalone-3.141.59.jar -port 4444
