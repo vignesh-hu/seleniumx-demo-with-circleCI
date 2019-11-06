@@ -37,7 +37,7 @@ jobs:
 
     - run:
         name: Start Selenium server
-        command: java -Dwebdriver.chrome.driver='~/repo/chromedriver' -jar selenium-server-standalone-3.141.59.jar -port 4444
+        command: java -Dwebdriver.chrome.driver="/home/circleci/repo/chromedriver" -jar selenium-server-standalone-3.141.59.jar -port 4444
         background: true
 
     # Download and cache dependencies

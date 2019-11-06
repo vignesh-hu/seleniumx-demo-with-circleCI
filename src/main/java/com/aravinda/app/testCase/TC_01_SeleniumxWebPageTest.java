@@ -10,7 +10,7 @@ import org.seleniumx.util.TestCase;
 public class TC_01_SeleniumxWebPageTest extends TestCase {
 
     @ServerSettings(
-            PLATFORM = Platform.LINUX,
+            PLATFORM = Platform.MAC,
             BROWSER = Set.BROWSER.CHROME,
             VERSION = "1.0",
             SERVER_PORT = "4444",
