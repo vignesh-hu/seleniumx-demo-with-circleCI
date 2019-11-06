@@ -41,6 +41,7 @@ jobs:
     - run:
         name: install maven
         command: |
+          sudo apt-get update
           sudo apt install maven
           mvn -version
 
