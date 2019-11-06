@@ -34,6 +34,7 @@ jobs:
           unzip chromedriver_linux64.zip
           chmod -R 777 chromedriver
           chown -R circleci:circleci chromedriver
+          ls -la
 
     - run:
         name: Start Selenium server
