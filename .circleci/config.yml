@@ -25,6 +25,12 @@ jobs:
           sudo apt install maven -y
           mvn -version
 
+    - run:
+        name: Create circleci user
+        command: |
+          sudo useradd -m circleci
+          sudo usermod -a -G root circleci
+
     # Download and cache dependencies
     - restore_cache:
         keys:
