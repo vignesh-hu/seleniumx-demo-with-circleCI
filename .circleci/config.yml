@@ -21,35 +21,18 @@ jobs:
       MAVEN_OPTS: -Xmx3200m
 
     steps:
-      - checkout
-      - run:
-          name: Extract chrome driver
-          command: chown -R $USER:$USER /home
-#    - run:
-#        name: Download Selenium server
-#        command: curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-#    - run:
-#        name: Download Selenium chrome driver
-#        command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
-#    - run:
-#        name: Extract chrome driver
-#       command: |
-#         unzip chromedriver_linux64.zip
-#         pwd
-#         ls -la
-#         chown -R $USER:$USER chromedriver
-#
-#    - run:
-#        name: Start Selenium server
-#        command: java -Dwebdriver.chrome.driver="~/repo/chromedriver" -jar selenium-server-standalone-3.141.59.jar -port 4444
-#        background: true
+    - checkout
+    - run:
+        name: Extract chrome driver
+        command: chown -R $USER:$USER /home
 
     # Download and cache dependencies
+
     - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "pom.xml" }}
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
+      keys:
+      - v1-dependencies-{{ checksum "pom.xml" }}
+      # fallback to using the latest cache if no exact match is found
+      - v1-dependencies-
 
     - run: mvn dependency:go-offline
 
