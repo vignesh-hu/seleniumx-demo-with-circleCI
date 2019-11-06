@@ -34,6 +34,8 @@ jobs:
           unzip chromedriver_linux64.zip
           chmod -R 777 chromedriver
           chown -R circleci:circleci chromedriver
+          chmod -R 777 selenium-server-standalone-3.141.59.jar
+          chown -R circleci:circleci selenium-server-standalone-3.141.59.jar
           ls -la
 
     - run:
