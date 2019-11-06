@@ -8,7 +8,6 @@ jobs:
     docker:
     # specify the version you desire here
     - image: selenium/standalone-chrome:latest
-    - name: Selenium
 
     # Specify service dependencies here if necessary
     # CircleCI maintains a library of pre-built images
