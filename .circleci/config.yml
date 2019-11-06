@@ -2,7 +2,8 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 2
+
+version: 3
 jobs:
   build:
     docker:
@@ -21,24 +22,24 @@ jobs:
       MAVEN_OPTS: -Xmx3200m
 
     steps:
-      - checkout
-      - run:
-          name: Extract chrome driver
-          command: chown -R $USER:$USER /home
+    - checkout
+    - run:
+        name: Download Selenium server
+        command: chown -R $USER:$USER /home
 
-      # Download and cache dependencies
-      - restore_cache:
+    # Download and cache dependencies
+    - restore_cache:
         keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+        - v1-dependencies-{{ checksum "pom.xml" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
 
-      - run: mvn dependency:go-offline
+    - run: mvn dependency:go-offline
 
-      - save_cache:
-          paths:
-          - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
+    - save_cache:
+        paths:
+        - ~/.m2
+        key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      # run unit tests!
-      - run: mvn integration-test
+    # run unit tests!
+    - run: mvn integration-test
