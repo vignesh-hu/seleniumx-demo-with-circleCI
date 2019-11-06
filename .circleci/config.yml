@@ -38,7 +38,7 @@ jobs:
           chown -R circleci:circleci selenium-server-standalone-3.141.59.jar
           ls -la
 
-    -run:
+    - run:
         name: install maven
         command: |
           sudo apt install maven
