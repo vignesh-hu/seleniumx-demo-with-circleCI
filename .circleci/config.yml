@@ -2,13 +2,12 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-
 version: 3
 jobs:
   build:
     docker:
     # specify the version you desire here
-    - image: selenium/standalone-chrome:latest
+    - image: circleci/openjdk:8-jdk-stretch
 
     # Specify service dependencies here if necessary
     # CircleCI maintains a library of pre-built images
@@ -25,7 +24,20 @@ jobs:
     - checkout
     - run:
         name: Download Selenium server
-        command: chown -R $USER:$USER /home
+        command: curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
+    - run:
+        name: Download Selenium chrome driver
+        command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
+    - run:
+        name: Extract chrome driver
+        command: |
+          unzip chromedriver_linux64.zip
+          chown -R circleci:circleci chromedriver
+
+    - run:
+        name: Start Selenium server
+        command: java -Dwebdriver.chrome.driver="~/repo/chromedriver" -jar selenium-server-standalone-3.141.59.jar -port 4444
+        background: true
 
     # Download and cache dependencies
     - restore_cache:
