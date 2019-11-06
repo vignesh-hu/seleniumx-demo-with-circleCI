@@ -2,12 +2,13 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 3
+version: 2
 jobs:
   build:
     docker:
     # specify the version you desire here
-    - image: circleci/openjdk:8-jdk-stretch
+    - image: selenium/standalone-chrome:latest
+    - name: Selenium
 
     # Specify service dependencies here if necessary
     # CircleCI maintains a library of pre-built images
@@ -20,26 +21,26 @@ jobs:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
 
-    steps:
-    - checkout
-    - run:
-        name: Download Selenium server
-        command: curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-    - run:
-        name: Download Selenium chrome driver
-        command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
-    - run:
-        name: Extract chrome driver
-        command: |
-          unzip chromedriver_linux64.zip
-          pwd
-          ls -la
-          chown -R $USER:$USER chromedriver
-
-    - run:
-        name: Start Selenium server
-        command: java -Dwebdriver.chrome.driver="~/repo/chromedriver" -jar selenium-server-standalone-3.141.59.jar -port 4444
-        background: true
+#    steps:
+#    - checkout
+#    - run:
+#        name: Download Selenium server
+#        command: curl -O http://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
+#    - run:
+#        name: Download Selenium chrome driver
+#        command: curl -O https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
+#    - run:
+#        name: Extract chrome driver
+#       command: |
+#         unzip chromedriver_linux64.zip
+#         pwd
+#         ls -la
+#         chown -R $USER:$USER chromedriver
+#
+#    - run:
+#        name: Start Selenium server
+#        command: java -Dwebdriver.chrome.driver="~/repo/chromedriver" -jar selenium-server-standalone-3.141.59.jar -port 4444
+#        background: true
 
     # Download and cache dependencies
     - restore_cache:
