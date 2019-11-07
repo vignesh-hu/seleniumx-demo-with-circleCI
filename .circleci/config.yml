@@ -6,7 +6,7 @@ version: 3
 jobs:
   build:
     docker:
-    - image: aravindaw/seleniumx
+    - image: aravindaw/seleniumx:1.0
       environment:
       MAVEN_OPTS: -Xmx3200m
 
