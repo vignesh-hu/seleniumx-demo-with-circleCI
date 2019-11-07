@@ -8,6 +8,7 @@ jobs:
     docker:
     - image: aravindaw/seleniumx:2.0
       name: sleniumx
+      port: 4444:4444
       environment:
       MAVEN_OPTS: -Xmx3200m
 
