@@ -14,7 +14,7 @@ public class TC_01_SeleniumxWebPageTest extends TestCase {
             BROWSER = Set.BROWSER.CHROME,
             VERSION = "1.0",
             SERVER_PORT = "4444",
-            SERVER_URL = "http://localhost",
+            SERVER_URL = "http://127.0.0.1",
             BASE_URL = "https://www.seleniumx.com/",
             IMPLICIT_WAIT = 100)
 //    @DriverSettings(

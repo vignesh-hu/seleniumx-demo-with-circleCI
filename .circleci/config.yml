@@ -26,6 +26,23 @@ jobs:
 
     - run: mvn dependency:go-offline
 
+    - run:
+        command: |
+          sudo apt-get install libxi6 libgconf-2-4
+          sudo apt-get -y install xvfb gtk2-engines-pixbuf
+          sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
+          sudo apt-get install xvfb
+          sudo apt-get -y install imagemagick x11-apps
+
+    - run:
+        name: Running X virtual framebuffer
+        command: Xvfb :0 -ac &
+
+    - run:
+        name: Run Tests
+        command: |
+          export DISPLAY=:99
+
     - save_cache:
         paths:
         - ~/.m2
