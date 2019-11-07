@@ -15,13 +15,6 @@ jobs:
     steps:
     - checkout
 
-    - run:
-        name: Create circleci user
-        command: |
-          sudo useradd -m circleci
-          sudo chown -R seluser:seluser /home/circleci
-          ls -la /home
-
     # Download and cache dependencies
     - restore_cache:
         keys:
