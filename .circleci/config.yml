@@ -28,11 +28,11 @@ jobs:
 
     - run:
         command: |
-          sudo apt-get install libxi6 libgconf-2-4
-          sudo apt-get -y install xvfb gtk2-engines-pixbuf
-          sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
-          sudo apt-get install xvfb
-          sudo apt-get -y install imagemagick x11-apps
+          sudo apt-get install libxi6 libgconf-2-4 -y
+          sudo apt-get install xvfb gtk2-engines-pixbuf -y
+          sudo apt-get install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable -y
+          sudo apt-get install xvfb -y
+          sudo apt-get install imagemagick x11-apps -y
 
     - run:
         name: Running X virtual framebuffer
