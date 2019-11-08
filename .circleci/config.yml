@@ -11,13 +11,13 @@ jobs:
       environment:
         MAVEN_OPTS: -Xmx3200m
 
-    - run: sudo su seluser
 
     working_directory: /home/circleci/seleniumx-demo-with-circleCI
 
     steps:
     - checkout
 
+    - run: sudo su seluser
     # Download and cache dependencies
     - restore_cache:
         keys:
