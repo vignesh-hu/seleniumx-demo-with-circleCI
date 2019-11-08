@@ -13,7 +13,7 @@ public class TC_01_SeleniumxWebPageTest extends TestCase {
             PLATFORM = Platform.LINUX,
             BROWSER = Set.BROWSER.CHROME,
             VERSION = "1",
-            SERVER_PORT = "4444",
+            SERVER_PORT = "5555",
             SERVER_URL = "http://localhost",
             BASE_URL = "https://www.seleniumx.com/",
             IMPLICIT_WAIT = 100)
