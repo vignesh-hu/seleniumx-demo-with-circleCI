@@ -27,10 +27,11 @@ jobs:
 
     - run: mvn dependency:go-offline
 
+    - run: sudo kill $(ps aux | grep 'selenium' | awk '{print $2}')
+
     - run:
         name: Start selenium standalon server
         command: |
-          sudo kill $(ps aux | grep 'selenium-server-standalone' | awk '{print $2}')
           java -version
           sudo java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444 -log /opt/selenium/selenium.log
         background: true
