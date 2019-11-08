@@ -34,6 +34,7 @@ jobs:
           sudo kill $(ps aux | grep 'selenium' | awk '{print $2}')
           ps -ef | grep selenium
           java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444
+          ps -ef | grep selenium
         background: true
 
     - save_cache:
