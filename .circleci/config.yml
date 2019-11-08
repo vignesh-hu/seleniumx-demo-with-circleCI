@@ -31,10 +31,15 @@ jobs:
         name: Start selenium standalon server
         command: |
           ps -ef | grep selenium
+          echo "######################################"
           sudo kill $(ps aux | grep 'selenium' | awk '{print $2}')
+          echo "######################################"
           ps -ef | grep selenium
+          echo "######################################"
           java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444
+          echo "######################################"
           ps -ef | grep selenium
+          echo "######################################"
         background: true
 
     - save_cache:
