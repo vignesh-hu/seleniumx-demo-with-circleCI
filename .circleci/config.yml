@@ -32,7 +32,8 @@ jobs:
         command: |
           sudo kill $(ps aux | grep 'start-selenium-standalone' | awk '{print $2}')
           sudo kill $(ps aux | grep 'selenium-server-standalone' | awk '{print $2}')
-          java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444 -log /opt/selenium/selenium.log
+          java -version
+          sudo java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444 -log /opt/selenium/selenium.log
         background: true
 
     - save_cache:
