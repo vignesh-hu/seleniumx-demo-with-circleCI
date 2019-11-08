@@ -51,4 +51,4 @@ jobs:
 
     - store_artifacts:
         path: /opt/selenium/selenium.log
-        destination: artifact-file
+        destination: selenium-server.log
