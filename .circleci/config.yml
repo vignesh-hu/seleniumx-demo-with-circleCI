@@ -16,6 +16,15 @@ jobs:
     steps:
     - checkout
 
+
+    - run:
+        name: Create seluser user
+        command: |
+          sudo useradd -m seluser
+          sudo chown -R seluser:seluser /home/seluser
+          ls -la /home
+
+
     # Download and cache dependencies
     - restore_cache:
         keys:
@@ -26,12 +35,6 @@ jobs:
 
     - run: mvn dependency:go-offline
 
-    - run:
-        name: Create seluser user
-        command: |
-          sudo useradd -m seluser
-          sudo chown -R seluser:seluser /home/seluser
-          ls -la /home
 
     - run: docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug
 
