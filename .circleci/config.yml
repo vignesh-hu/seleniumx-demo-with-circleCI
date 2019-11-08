@@ -16,11 +16,6 @@ jobs:
     steps:
     - checkout
 
-    - run:
-        name: Create circleci user
-        command: |
-          sudo chown -R seluser:seluser /home/circleci
-
     # Download and cache dependencies
     - restore_cache:
         keys:
@@ -30,6 +25,11 @@ jobs:
 
 
     - run: mvn dependency:go-offline
+
+    - run:
+        name: Create circleci user
+        command: |
+          sudo su - seluser
 
     - run: docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug
 
