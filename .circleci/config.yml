@@ -28,10 +28,8 @@ jobs:
     - run: mvn dependency:go-offline
 
     - run:
-        name: kill running process
         command: |
-          sudo kill $(ps aux | grep 'selenium' | awk '{print $2}')
-          ps -ef | grep selenium
+          sudo /home/seluser/seleniumx-demo-with-circleCI/stop.sh
 
     - run:
         name: Start selenium standalon server
