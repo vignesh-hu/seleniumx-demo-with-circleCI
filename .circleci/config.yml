@@ -21,7 +21,7 @@ jobs:
         name: Create seluser user
         command: |
           sudo useradd -m seluser
-          sudo chown -R seluser:seluser /home/seluser
+          sudo chown -R circleci:circleci /home/seluser
           ls -la /home
 
 
