@@ -29,7 +29,7 @@ jobs:
 
     - run:
         command: |
-          sudo /home/seluser/seleniumx-demo-with-circleCI/stop.sh
+          sudo stop.sh
 
     - run:
         name: Start selenium standalon server
