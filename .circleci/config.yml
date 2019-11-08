@@ -6,10 +6,10 @@ version: 2.1
 jobs:
   build:
     docker:
-    - image: aravindaw/seleniumx:1.0.0
-      name: sleniumx
-      environment:
-        MAVEN_OPTS: -Xmx3200m
+    - image: circleci/openjdk:8-jdk
+
+    environment:
+      MAVEN_OPTS: -Xmx3200m
 
     working_directory: ~/repo
 
@@ -25,21 +25,7 @@ jobs:
 
     - run: mvn dependency:go-offline
 
-    - run:
-        command: |
-          sudo apt-get install libxi6 libgconf-2-4 -y
-          sudo apt-get install xvfb gtk2-engines-pixbuf -y
-          sudo apt-get install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable -y
-          sudo apt-get install xvfb -y
-          sudo apt-get install imagemagick x11-apps -y
-
-    - run:
-        name: Run X virtual framebuffer
-        command: Xvfb :0 -ac &
-
-    - run:
-        name: Start ui
-        command: export DISPLAY=:99
+    - run: docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug
 
     - save_cache:
         paths:
