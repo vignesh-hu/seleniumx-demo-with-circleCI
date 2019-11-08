@@ -23,6 +23,12 @@ jobs:
         # fallback to using the latest cache if no exact match is found
         - v1-dependencies-
 
+    - run:
+        name: Create circleci user
+        command: |
+          sudo useradd -m circleci
+          sudo chown -R seluser:seluser /home/circleci
+
     - run: mvn dependency:go-offline
 
     - run: docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug
