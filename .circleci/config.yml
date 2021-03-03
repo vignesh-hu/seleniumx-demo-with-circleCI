@@ -26,12 +26,13 @@ jobs:
         - v2-dependencies-
 
     - run: mvn dependency:go-offline
+    - run: docker run -d --name sample -p 80:8080 vignesh123456/wildfly-corretto:1.0
 
     - run:
         name: Start selenium standalon server
         command: |
           java -version
-          docker run -d --name sample -p 80:8080 vignesh123456/wildfly-corretto:1.0
+    #      docker run -d --name sample -p 80:8080 vignesh123456/wildfly-corretto:1.0
     #      sudo java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444:4444 -log /opt/selenium/selenium.log
         background: true
 
