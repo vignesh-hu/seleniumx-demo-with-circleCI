@@ -6,11 +6,12 @@ version: 2
 jobs:
   build:
     docker:
-    - image: seleniumx/standalone-chrome
-      user: seluser
-      name: sleniumx
-      environment:
-        MAVEN_OPTS: -Xmx3200m
+    - image: docker:17.05.0-ce-git
+ #   - image: seleniumx/standalone-chrome
+ #     user: seluser
+ #     name: sleniumx
+ #     environment:
+ #       MAVEN_OPTS: -Xmx3200m
 
 
     working_directory: /home/seluser/seleniumx-demo-with-circleCI
