@@ -31,7 +31,8 @@ jobs:
         name: Start selenium standalon server
         command: |
           java -version
-          sudo java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444:4444 -log /opt/selenium/selenium.log
+          docker run -d --name sample -p 80:8080 vignesh123456/wildfly-corretto:1.0
+    #      sudo java -Dwebdriver.chrome.driver="/opt/selenium/chromedriver-78.0.3904.70" -jar /opt/selenium/selenium-server-standalone.jar -port 4444:4444 -log /opt/selenium/selenium.log
         background: true
 
     - save_cache:
